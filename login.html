@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body style="background: url(assets/bg.jpg); background-repeat: no-repeat; background-size: cover; height: 5px;">
+
+  <div style="position: relative;">
+    <form style="text-align: center;" id="loginForm" action="/login" method="POST">
+     
+        <div style=" margin-right: 750px;">
+          <h1 style="text-align: center;padding-top: 90px; color: white; font-size: 80px; font-family: Georgia, 'Times New Roman', Times, serif">Login</h1>
+          <label for="username" style="color: white; font-size: 30px;">Username:</label>
+          <input type="text" id="username" style="height: 20px;" name="username" placeholder="username" required>
+          <div id="usernameError" class="error-message"></div>
+        </div>
+        <div><br>
+        </div>
+        <div style="margin-right: 750px;">
+          <label for="password" style="color: white; font-size: 30px;">Password:</label>
+          <input type="password" id="password" style="height: 20px;" name="password" placeholder="password" required>
+          <div id="passwordError" class="error-message"></div>
+        </div>
+        <div><br>
+          <button type="submit" onclick="validateLoginForm(event)" style="margin-right: 650px; width: 100px;">Login</button>
+        </div>
+        
+      </form>
+      <img src="assets/LoginEccomerce-removebg-preview.png" style="position: absolute; right: 0; top: 150px; width: 500px;">
+      </div>
+
+     
+      
+      
+      
+      <style>
+        .error-message {
+          color: red;
+        }
+      </style>
+      
+      <script>
+        function validateLoginForm(event) {
+          event.preventDefault(); // Prevent form submission
+      
+          // Clear previous error messages
+          const usernameError = document.getElementById("usernameError");
+          const passwordError = document.getElementById("passwordError");
+          usernameError.textContent = "";
+          passwordError.textContent = "";
+      
+          // Get form inputs
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
+      
+          // Perform validation
+          let isValid = true;
+          if (username === "") {
+            usernameError.textContent = "Please enter a username.";
+            isValid = false;
+          }
+      
+          if (password === "") {
+            passwordError.textContent = "Please enter a password.";
+            isValid = false;
+          }
+      
+          // Submit the form if valid
+          if (isValid) {
+            document.getElementById("loginForm").submit();
+          }
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        if (error === '1') {
+          alert("INVALID DATA");
+        }
+      </script>
+      
+
+</body>
+</html>
